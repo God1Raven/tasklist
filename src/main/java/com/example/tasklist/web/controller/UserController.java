@@ -52,10 +52,10 @@ public class UserController {
     }
 
     @PostMapping("/{id}/tasks")
-    public TaskDto create(@PathVariable Long id,
+    public TaskDto create(@PathVariable Long userId,
                           @Validated(OnCreate.class) @RequestBody TaskDto taskDto){
         Task task = taskMapper.DtoToEntity(taskDto);
-        Task createdTask  = taskService.create(task, id);
+        Task createdTask  = taskService.create(task, userId);
         return taskMapper.entityToDto(createdTask);
     }
 

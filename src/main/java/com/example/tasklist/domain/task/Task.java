@@ -11,6 +11,6 @@ public class Task {
     private String title;
     private String description;
     private Status status;
-    private LocalDateTime expirationTime;
+    private LocalDateTime expirationDate;
 
 }
