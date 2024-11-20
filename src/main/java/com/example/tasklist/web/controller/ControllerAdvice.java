@@ -5,6 +5,7 @@ import com.example.tasklist.domain.exeption.Exceptionbody;
 import com.example.tasklist.domain.exeption.ResourceMappingException;
 import com.example.tasklist.domain.exeption.ResourceNotFoundException;
 import jakarta.validation.ConstraintViolationException;
+import org.apache.tomcat.websocket.AuthenticationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -63,10 +64,17 @@ public class ControllerAdvice {
         return exceptionbody;
     }
 
+    @ExceptionHandler(AuthenticationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Exceptionbody handleAuthentication(AuthenticationException e){
+        return new Exceptionbody("Authentication failed");
+    }
+
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Exceptionbody handleException(Exception e){
         return new Exceptionbody("Internal Error");
     }
+
 
 }

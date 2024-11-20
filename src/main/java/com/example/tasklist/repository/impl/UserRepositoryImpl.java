@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-@Repository
+//@Repository
 @RequiredArgsConstructor
 public class UserRepositoryImpl implements UserRepository {
 
@@ -73,7 +73,7 @@ public class UserRepositoryImpl implements UserRepository {
                 SELECT 1
                 FROM users_tasks
                 WHERE user_id = ?
-                and task_id?;
+                and task_id = ?;
             """;
     private final String DELETE = """
                 DELETE FROM users

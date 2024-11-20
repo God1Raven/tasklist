@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5434/postgres?currentSchema=postgres
+    username: postgres
+    password: 1758
+    drive-class-name: org.postgresql.Driver
+  sql:
+    init:
+      mode: never
+      continue-on-error: false
+#      data-locations: classpath:zemo_data.sql
+  liquibase:
+    change-log: classpath*:liquibase/db/changelog/db.changelog-master.yaml
+    enabled: true
+    default-schema: postgres
+mybatis:
+  mapper-locations: classpath:/mybatis/mapper/*.xml
+security:
+  jwt:
+    secret: ZWdqbmduZ250cms5NDVrbWxwZ21ybHRnMDk1NHBrMDQ1bWxyZ3JnbXJ0bXQ=
+    access: 3600000
+    refresh: 2592000000
+springdoc:
+  override-with-generic-response: false
